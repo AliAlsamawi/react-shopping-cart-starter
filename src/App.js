@@ -6,10 +6,19 @@ import MyShoppingCart from './components/MyShoppingCart';
 import Form from './components/Form';
 import productsArr from './products';
 
+
 export default function App() {
   const [products, setProducts] = useState(productsArr);
   const [cart, setCart] = useState([]);
 
+  const addToCart = item => {
+    setCart( [...cart, item] )
+  };
+
+  const removeFromCart = index => {
+    const cartArr = cart.filter( (d,i) => i !== index )
+    setCart(cartArr)
+  };
   // create an addToCart function that takes in a product as a param
   // using the ...spread operator add the product to the cart array
 
@@ -21,8 +30,8 @@ export default function App() {
       <h1>Big Time Shopping</h1>
       <Form />
       <div className="products">
-        <AllTheThings />
-        <MyShoppingCart />
+        <AllTheThings products={products} handleClick={addToCart} />
+      <MyShoppingCart cart={cart} handleClick={removeFromCart} />
       </div>
     </div>
   );

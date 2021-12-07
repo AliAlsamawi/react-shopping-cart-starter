@@ -8,7 +8,7 @@ import productsArr from './products';
 
 
 export default function App() {
-  const [products, setProducts] = useState(productsArr);
+  const [products] = useState(productsArr);
   const [cart, setCart] = useState([]);
 
   const addToCart = item => {
